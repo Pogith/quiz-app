@@ -19,7 +19,16 @@ const quizSlice = createSlice({
     fetchQuizSuccess: (state, action: FetchQuizSuccessPayloadAction) => {
       const { quiz } = action.payload;
 
-      state.quiz = quiz;
+      state.quiz = quiz.map((quizData) => {
+        const correctAnswer = quizData["correct_answer"];
+        const incorrectAnswers = quizData["incorrect_answers"];
+        const answers = [correctAnswer, ...incorrectAnswers];
+
+        return {
+          ...quizData,
+          answers,
+        };
+      });
       state.isFetchingQuiz = initialState.isFetchingQuiz;
     },
 
