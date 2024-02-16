@@ -7,3 +7,7 @@ export const getQuiz = (state: RootState) => {
 export const getIsFetchingQuiz = (state: RootState) => {
   return state.quiz.isFetchingQuiz;
 };
+
+export const getQuizResults = (state: RootState) => {
+  return state.quiz.results;
+};

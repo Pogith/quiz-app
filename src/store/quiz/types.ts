@@ -12,10 +12,17 @@ type Quiz = {
   answers: string[];
 };
 
+export type Results = {
+  quizTime: number;
+  correctAnswersCounts: number;
+  incorrectAnswersCounts: number;
+};
+
 export type InitialState = {
   isFetchingQuiz: boolean;
   quiz: Quiz[];
   error: any;
+  results: Results;
 };
 
 export type QuizResponse = {
@@ -25,4 +32,9 @@ export type QuizResponse = {
 
 export type FetchQuizSuccessPayloadAction = PayloadAction<{
   quiz: Quiz[];
+}>;
+
+export type CheckQuizAnswerPayloadAction = PayloadAction<{
+  quizNum: number;
+  answer: string;
 }>;

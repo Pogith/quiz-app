@@ -1,11 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { FetchQuizSuccessPayloadAction, InitialState } from "./types";
+import {
+  CheckQuizAnswerPayloadAction,
+  FetchQuizSuccessPayloadAction,
+  InitialState,
+} from "./types";
 
 const initialState: InitialState = {
   isFetchingQuiz: false,
   quiz: [],
   error: null,
+  results: {
+    quizTime: 0,
+    correctAnswersCounts: 0,
+    incorrectAnswersCounts: 0,
+  },
 };
 
 const quizSlice = createSlice({
@@ -36,10 +45,27 @@ const quizSlice = createSlice({
       state.error = action.payload;
       state.isFetchingQuiz = initialState.isFetchingQuiz;
     },
+
+    checkQuizAnswer: (state, action: CheckQuizAnswerPayloadAction) => {
+      const { quizNum, answer } = action.payload;
+
+      const currentQuiz = state.quiz[quizNum];
+
+      if (currentQuiz["correct_answer"] === answer) {
+        state.results.correctAnswersCounts += 1;
+      } else {
+        state.results.incorrectAnswersCounts += 1;
+      }
+    },
   },
 });
 
 const { actions, reducer } = quizSlice;
 
-export const { fetchQuizStart, fetchQuizSuccess, fetchQuizError } = actions;
+export const {
+  fetchQuizStart,
+  fetchQuizSuccess,
+  fetchQuizError,
+  checkQuizAnswer,
+} = actions;
 export default reducer;
