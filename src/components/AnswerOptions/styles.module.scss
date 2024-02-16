@@ -1,0 +1,45 @@
+$fontColor: #003180;
+
+@mixin list-base($borderColor) {
+  position: relative;
+  padding: 11px;
+  margin-top: 15px;
+  background: white;
+  border: 1px solid $borderColor;
+  border-radius: 16px;
+  color: $fontColor;
+  font-size: 16px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+@mixin answer-badge-base($background) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90px;
+  height: 25px;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translate(-30%, -50%);
+  border-radius: 16px;
+  background: $background;
+  color: white;
+}
+
+.list {
+  @include list-base(#cccccc);
+}
+
+.selected {
+  @include list-base($fontColor);
+}
+
+.correct-answer {
+  @include answer-badge-base(#01a6ffe2);
+}
+
+.incorrect-answer {
+  @include answer-badge-base(#ff2f01e2);
+}
