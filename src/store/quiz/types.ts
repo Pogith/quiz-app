@@ -2,7 +2,7 @@ import { PayloadAction } from "@reduxjs/toolkit";
 
 type QuizType = "multiple" | "boolean";
 type QuizDifficulty = "easy" | "medium" | "hard";
-type Quiz = {
+export type Quiz = {
   type: QuizType;
   difficulty: QuizDifficulty;
   category: string;
@@ -37,4 +37,8 @@ export type FetchQuizSuccessPayloadAction = PayloadAction<{
 export type CheckQuizAnswerPayloadAction = PayloadAction<{
   quizNum: number;
   answer: string;
+}>;
+
+export type CheckQuizTimePayloadAction = PayloadAction<{
+  time: number;
 }>;

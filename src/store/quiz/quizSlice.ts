@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 import {
   CheckQuizAnswerPayloadAction,
+  CheckQuizTimePayloadAction,
   FetchQuizSuccessPayloadAction,
   InitialState,
 } from "./types";
@@ -57,6 +58,12 @@ const quizSlice = createSlice({
         state.results.incorrectAnswersCounts += 1;
       }
     },
+
+    checkQuizTime: (state, action: CheckQuizTimePayloadAction) => {
+      const { time } = action.payload;
+
+      state.results.quizTime = time;
+    },
   },
 });
 
@@ -67,5 +74,6 @@ export const {
   fetchQuizSuccess,
   fetchQuizError,
   checkQuizAnswer,
+  checkQuizTime,
 } = actions;
 export default reducer;
