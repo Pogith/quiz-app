@@ -11,3 +11,7 @@ export const getIsFetchingQuiz = (state: RootState) => {
 export const getQuizResults = (state: RootState) => {
   return state.quiz.results;
 };
+
+export const getIncorrectQuiz = (state: RootState) => {
+  return state.quiz.incorrectQuiz;
+};

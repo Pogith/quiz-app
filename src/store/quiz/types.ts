@@ -19,11 +19,17 @@ export type Results = {
   incorrectAnswersCounts: number;
 };
 
+export type IncorrectQuiz = {
+  quizNum: number;
+  selectedAnswer: string;
+} & Quiz;
+
 export type InitialState = {
   isFetchingQuiz: boolean;
   quiz: Quiz[];
   error: any;
   results: Results;
+  incorrectQuiz: IncorrectQuiz[];
 };
 
 export type QuizResponse = {
@@ -42,6 +48,11 @@ export type CheckQuizAnswerPayloadAction = PayloadAction<{
 
 export type CheckQuizTimePayloadAction = PayloadAction<{
   time: number;
+}>;
+
+export type UpdateIncorrectQuizPayloadAction = PayloadAction<{
+  quizNum: number;
+  answer: string;
 }>;
 
 export type ChartDatasets = {

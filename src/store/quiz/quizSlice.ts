@@ -16,6 +16,7 @@ const initialState: InitialState = {
     correctAnswersCounts: 0,
     incorrectAnswersCounts: 0,
   },
+  incorrectQuiz: [],
 };
 
 const quizSlice = createSlice({
@@ -56,6 +57,14 @@ const quizSlice = createSlice({
         state.results.correctAnswersCounts += 1;
       } else {
         state.results.incorrectAnswersCounts += 1;
+
+        const incorrectQuiz = {
+          ...currentQuiz,
+          quizNum,
+          selectedAnswer: answer,
+        };
+
+        state.incorrectQuiz.push(incorrectQuiz);
       }
     },
 
