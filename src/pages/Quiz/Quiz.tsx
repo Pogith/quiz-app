@@ -1,8 +1,15 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import { getIsFetchingQuiz, getQuiz } from "@/store/quiz/selectors";
-import { checkQuizAnswer, fetchQuizStart } from "@/store/quiz/quizSlice";
+import {
+  checkQuizAnswer,
+  checkQuizTime,
+  fetchQuizStart,
+} from "@/store/quiz/quizSlice";
+
+import { useSetInterval } from "@/hooks/useSetInterval";
 
 import Button from "@/components/Button/Button";
 import AnswerOptions from "@/components/AnswerOptions/AnswerOptions";
@@ -16,6 +23,7 @@ export type SelectedAnswer = {
 
 function Quiz() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const quiz = useSelector(getQuiz);
   const isFetchingQuiz = useSelector(getIsFetchingQuiz);
@@ -24,6 +32,8 @@ function Quiz() {
   const [selectedAnswer, setSelectedAnswer] = useState<SelectedAnswer | null>(
     null
   );
+
+  const time = useSetInterval();
 
   useEffect(() => {
     dispatch(fetchQuizStart());
@@ -51,7 +61,9 @@ function Quiz() {
   };
 
   const handleResultButtonClick = () => {
-    return;
+    dispatch(checkQuizTime({ time }));
+
+    navigate("/result");
   };
 
   const activeQuiz = quiz[quizNum];
