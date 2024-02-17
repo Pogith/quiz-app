@@ -1,13 +1,25 @@
 import { useNavigate } from "react-router-dom";
 
+import Button from "@/components/Button/Button";
+
+import styles from "./styles.module.scss";
+
 function Home() {
   const navigate = useNavigate();
 
   const handleNavigateQuestionPage = () => {
-    navigate("/questions");
+    navigate("/quiz");
   };
 
-  return <button onClick={handleNavigateQuestionPage}>Home</button>;
+  return (
+    <div className={styles["container"]}>
+      <Button
+        text="Start Quiz!"
+        size="large"
+        onClick={handleNavigateQuestionPage}
+      />
+    </div>
+  );
 }
 
 export default Home;
