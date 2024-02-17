@@ -1,13 +1,14 @@
-$fontColor: #003180;
+$basefontColor: #003180;
+$baseBorderColor: #cccccc;
 
-@mixin list-base($borderColor) {
+@mixin list-base($background, $borderColor, $color) {
   position: relative;
   padding: 11px;
   margin-top: 15px;
-  background: white;
+  background: $background;
   border: 1px solid $borderColor;
   border-radius: 16px;
-  color: $fontColor;
+  color: $color;
   font-size: 16px;
   text-decoration: none;
   cursor: pointer;
@@ -29,17 +30,29 @@ $fontColor: #003180;
 }
 
 .list {
-  @include list-base(#cccccc);
+  @include list-base(white, $baseBorderColor, $basefontColor);
 }
 
-.selected {
-  @include list-base($fontColor);
+.selected-correct-answer {
+  @include list-base(
+    linear-gradient(90deg, #838bfe 20%, #9bd0f5 80%),
+    $baseBorderColor,
+    white
+  );
 }
 
-.correct-answer {
-  @include answer-badge-base(#01a6ffe2);
+.selected-incorrect-answer {
+  @include list-base(
+    linear-gradient(90deg, #fa7690 20%, #ffb1c1 80%),
+    $baseBorderColor,
+    white
+  );
 }
 
-.incorrect-answer {
-  @include answer-badge-base(#ff2f01e2);
+.correct-answer-badge {
+  @include answer-badge-base(#5fb9f9);
+}
+
+.incorrect-answer-badge {
+  @include answer-badge-base(#fe829b);
 }
