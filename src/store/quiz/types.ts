@@ -1,4 +1,5 @@
 import { PayloadAction } from "@reduxjs/toolkit";
+import { Color } from "chart.js";
 
 type QuizType = "multiple" | "boolean";
 type QuizDifficulty = "easy" | "medium" | "hard";
@@ -42,3 +43,15 @@ export type CheckQuizAnswerPayloadAction = PayloadAction<{
 export type CheckQuizTimePayloadAction = PayloadAction<{
   time: number;
 }>;
+
+export type ChartDatasets = {
+  label?: string;
+  data: any[];
+  borderWidth?: number | object;
+  backgroundColor?: Color;
+  borderColor?: Color;
+};
+export type ChartData = {
+  labels: string[];
+  datasets: ChartDatasets[];
+};
