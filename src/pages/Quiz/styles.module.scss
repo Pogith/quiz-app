@@ -31,19 +31,3 @@ $fontColor: #003180;
   font-size: 20px;
   font-weight: 700;
 }
-
-.list {
-  padding: 11px;
-  margin-top: 15px;
-  background: white;
-  border: 1px solid #cccccc;
-  border-radius: 16px;
-  color: $fontColor;
-  font-size: 16px;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.selected {
-  border: 1px solid #de0c0c;
-}
