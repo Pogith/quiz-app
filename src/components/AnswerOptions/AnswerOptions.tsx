@@ -16,14 +16,17 @@ function AnswerOptions({ activeQuiz, selectedAnswer, onClick }: Props) {
         const isSelected = selectedAnswer?.answerNumber === index;
         const isCorrectAnswer =
           activeQuiz["correct_answer"] === selectedAnswer?.answer;
-        const selectedClassName = isCorrectAnswer
-          ? styles["selected-correct-answer"]
-          : styles["selected-incorrect-answer"];
+
+        const selectedClassName = isSelected
+          ? isCorrectAnswer
+            ? styles["selected-correct-answer"]
+            : styles["selected-incorrect-answer"]
+          : styles["unselected-answer"];
 
         return (
           <div
             key={answer}
-            className={isSelected ? selectedClassName : styles["list"]}
+            className={selectedAnswer ? selectedClassName : styles["list"]}
             onClick={() => onClick(answer, index)}
           >
             {answer}
