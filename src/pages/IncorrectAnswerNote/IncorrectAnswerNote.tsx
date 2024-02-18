@@ -1,16 +1,27 @@
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { getIncorrectQuiz } from "@/store/quiz/selectors";
+import { clearError, clearIncorrectQuiz } from "@/store/quiz/quizSlice";
+
 import Button from "@/components/Button/Button";
 
 import styles from "./styles.module.scss";
 
 function IncorrectAnswerNote() {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const incorrectQuiz = useSelector(getIncorrectQuiz);
+
+  useEffect(() => {
+    return () => {
+      dispatch(clearIncorrectQuiz());
+      dispatch(clearError());
+    };
+  }, []);
 
   const handleHomePageNavigate = () => {
     navigate("/");
