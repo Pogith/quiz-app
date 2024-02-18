@@ -1,17 +1,22 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home/Home";
+import Quiz from "./pages/Quiz/Quiz";
+import Result from "./pages/Result/Result";
+import IncorrectAnswerNote from "./pages/IncorrectAnswerNote/IncorrectAnswerNote";
 
 function App() {
   return (
     <>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/questions" element={<div>Question Page</div>} />
-          <Route path="/result" element={<div>Result Page</div>} />
-          <Route path="/*" element={<div>Not Found</div>} />
-        </Routes>
-      </BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/quiz" element={<Quiz />} />
+        <Route path="/result" element={<Result />} />
+        <Route
+          path="/incorrect-answer-note"
+          element={<IncorrectAnswerNote />}
+        />
+        <Route path="/*" element={<div>Not Found</div>} />
+      </Routes>
     </>
   );
 }
