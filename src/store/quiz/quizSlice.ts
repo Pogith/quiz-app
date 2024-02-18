@@ -73,6 +73,22 @@ const quizSlice = createSlice({
 
       state.results.quizTime = time;
     },
+
+    clearQuiz: (state) => {
+      state.quiz = initialState.quiz;
+    },
+
+    clearResults: (state) => {
+      state.results = initialState.results;
+    },
+
+    clearIncorrectQuiz: (state) => {
+      state.incorrectQuiz = initialState.incorrectQuiz;
+    },
+
+    clearError: (state) => {
+      state.error = initialState.error;
+    },
   },
 });
 
@@ -84,5 +100,9 @@ export const {
   fetchQuizError,
   checkQuizAnswer,
   checkQuizTime,
+  clearQuiz,
+  clearResults,
+  clearIncorrectQuiz,
+  clearError,
 } = actions;
 export default reducer;
