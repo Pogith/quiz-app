@@ -1,8 +1,10 @@
-import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import { getQuizResults } from "@/store/quiz/selectors";
 import { ChartData, ChartDatasets } from "@/store/quiz/types";
+import { clearError, clearQuiz, clearResults } from "@/store/quiz/quizSlice";
 
 import Button from "@/components/Button/Button";
 import BarChart from "@/components/Chart/BarChart/BarChart";
@@ -10,9 +12,18 @@ import BarChart from "@/components/Chart/BarChart/BarChart";
 import styles from "./styles.module.scss";
 
 function Result() {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const quizResults = useSelector(getQuizResults);
+
+  useEffect(() => {
+    return () => {
+      dispatch(clearQuiz());
+      dispatch(clearResults());
+      dispatch(clearError());
+    };
+  }, []);
 
   const { correctAnswersCounts, incorrectAnswersCounts, quizTime } =
     quizResults || {};
