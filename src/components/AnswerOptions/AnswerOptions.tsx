@@ -5,13 +5,13 @@ import styles from "./styles.module.scss";
 
 type Props = {
   activeQuiz: Quiz;
-  selectedAnswer: SelectedAnswer | null;
+  selectedAnswer?: SelectedAnswer | null;
   onClick: (answer: string, index: number) => void;
 };
 
 function AnswerOptions({ activeQuiz, selectedAnswer, onClick }: Props) {
   return (
-    <div>
+    <div data-testid="answer-list">
       {activeQuiz?.answers?.map((answer, index) => {
         const isSelected = selectedAnswer?.answerNumber === index;
         const isCorrectAnswer =
