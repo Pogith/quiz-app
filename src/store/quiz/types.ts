@@ -38,7 +38,7 @@ export type QuizResponse = {
 };
 
 export type FetchQuizSuccessPayloadAction = PayloadAction<{
-  quiz: Quiz[];
+  quiz: Omit<Quiz, "answers">[];
 }>;
 
 export type CheckQuizAnswerPayloadAction = PayloadAction<{
