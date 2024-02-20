@@ -34,7 +34,7 @@ export type InitialState = {
 
 export type QuizResponse = {
   response_code: number;
-  results: Quiz[];
+  results: Omit<Quiz, "answers">[];
 };
 
 export type FetchQuizSuccessPayloadAction = PayloadAction<{
