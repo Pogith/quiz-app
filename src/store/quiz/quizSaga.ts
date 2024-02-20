@@ -5,7 +5,7 @@ import { fetchQuizError, fetchQuizStart, fetchQuizSuccess } from "./quizSlice";
 
 import * as api from "@/api/fetchQuiz";
 
-function* watchFetchQuizSuccess() {
+export function* watchFetchQuizSuccess() {
   try {
     const response: QuizResponse = yield call(api.fetchQuiz);
 
