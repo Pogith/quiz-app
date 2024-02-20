@@ -4,11 +4,12 @@ import { mockData } from "@/api/mock";
 import reducer, {
   checkQuizAnswer,
   checkQuizTime,
+  fetchQuizStart,
   fetchQuizSuccess,
 } from "@/store/quiz/quizSlice";
 import { InitialState, Quiz } from "@/store/quiz/types";
 
-describe("Reducer Test", () => {
+describe("quizSlice Test", () => {
   const initialState: InitialState = {
     isFetchingQuiz: false,
     quiz: [],
@@ -39,9 +40,13 @@ describe("Reducer Test", () => {
   it("should handle a fetchQuiz being added to an empty quiz", () => {
     const mockQuizData = mockData.results as Omit<Quiz, "answers">[];
 
-    expect(
-      reducer(initialState, fetchQuizSuccess({ quiz: mockQuizData }))
-    ).toEqual({ ...initialState, quiz: quizState });
+    const reducerReturnValue = reducer(
+      initialState,
+      fetchQuizSuccess({ quiz: mockQuizData })
+    );
+
+    expect(reducerReturnValue.quiz).toEqual(quizState);
+    expect(reducerReturnValue.isFetchingQuiz).toEqual(false);
   });
 
   it("should handle a checkQuizAnswer being added to an results correct answer counts", () => {
@@ -108,5 +113,15 @@ describe("Reducer Test", () => {
         quizTime: time,
       },
     });
+  });
+
+  it("should show loading", () => {
+    const type = fetchQuizStart.type;
+
+    const action = { type };
+
+    const reducerReturnValue = reducer(initialState, action);
+
+    expect(reducerReturnValue.isFetchingQuiz).toEqual(true);
   });
 });
