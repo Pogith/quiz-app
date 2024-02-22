@@ -13,6 +13,8 @@ import { useSetInterval } from "@/hooks/useSetInterval";
 
 import Button from "@/components/Button/Button";
 import AnswerOptions from "@/components/AnswerOptions/AnswerOptions";
+import Loading from "@/components/Loading/Loading";
+import EmptyQuizScreen from "@/components/EmptyQuizScreen/EmptyQuizScreen";
 
 import styles from "./styles.module.scss";
 
@@ -40,11 +42,19 @@ function Quiz() {
   }, []);
 
   if (isFetchingQuiz) {
-    return <div>Loading....</div>;
+    return (
+      <div className={styles["container"]}>
+        <Loading />
+      </div>
+    );
   }
 
   if (quiz.length === 0) {
-    return <div className={styles.container}>No Quiz</div>;
+    return (
+      <div className={styles["container"]}>
+        <EmptyQuizScreen />
+      </div>
+    );
   }
 
   const handleAnswerClick = (answer: string, index: number) => {
