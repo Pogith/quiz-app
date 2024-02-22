@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import { getIsFetchingQuiz, getQuiz } from "@/store/quiz/selectors";
+import { getError, getIsFetchingQuiz, getQuiz } from "@/store/quiz/selectors";
 import {
   checkQuizAnswer,
   checkQuizTime,
@@ -17,6 +17,7 @@ import Loading from "@/components/Loading/Loading";
 import EmptyQuizScreen from "@/components/EmptyQuizScreen/EmptyQuizScreen";
 
 import styles from "./styles.module.scss";
+import Error from "@/components/Error/Error";
 
 export type SelectedAnswer = {
   answer: string;
@@ -29,6 +30,7 @@ function Quiz() {
 
   const quiz = useSelector(getQuiz);
   const isFetchingQuiz = useSelector(getIsFetchingQuiz);
+  const error = useSelector(getError);
 
   const [quizNum, setQuizNum] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<SelectedAnswer | null>(
@@ -49,10 +51,18 @@ function Quiz() {
     );
   }
 
-  if (quiz.length === 0) {
+  if (!error && quiz.length === 0) {
     return (
       <div className={styles["container"]}>
         <EmptyQuizScreen />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className={styles["container"]}>
+        <Error error={error} />
       </div>
     );
   }
