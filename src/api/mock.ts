@@ -199,3 +199,64 @@ export const mockData: QuizResponse = {
     },
   ],
 };
+
+export const mockIncorrectQuiz = [
+  {
+    answers: [
+      "Mario Kart: Super Circuit",
+      "Mario Kart: Double Dash",
+      "Mario Kart 64",
+      "Super Mario Kart",
+    ],
+    category: "Entertainment: Video Games",
+    correct_answer: "Mario Kart: Super Circuit",
+    difficulty: "medium",
+    incorrect_answers: [
+      "Mario Kart: Double Dash",
+      "Mario Kart 64",
+      "Super Mario Kart",
+    ],
+    question:
+      "Which ones of these Mario Kart games was made for the Gameboy Advance?",
+    quizNum: 1,
+    selectedAnswer: "Mario Kart: Double Dash",
+    type: "multiple",
+  },
+
+  {
+    answers: ["Robert Byrd", "Daniel Inouye", "Strom Thurmond", "Joe Biden"],
+    category: "Politics",
+    correct_answer: "Robert Byrd",
+    difficulty: "hard",
+    incorrect_answers: ["Daniel Inouye", "Strom Thurmond", "Joe Biden"],
+    question:
+      "Who was the longest-serving senator in US history, serving from 1959 to 2010?",
+    quizNum: 2,
+    selectedAnswer: "Joe Biden",
+    type: "multiple",
+  },
+  {
+    answers: ["Dibble", "Barbrady", "Mahoney", "Murphy"],
+    category: "Entertainment: Television",
+    correct_answer: "Dibble",
+    difficulty: "easy",
+    incorrect_answers: ["Barbrady", "Mahoney", "Murphy"],
+    question:
+      "What was the name of the police officer in the cartoon &quot;Top Cat&quot;?",
+    quizNum: 3,
+    selectedAnswer: "Barbrady",
+    type: "multiple",
+  },
+  {
+    answers: ["Poland", "Czechoslovakia", "Austria", "Hungary"],
+    category: "History",
+    correct_answer: "Poland",
+    difficulty: "easy",
+    incorrect_answers: ["Czechoslovakia", "Austria", "Hungary"],
+    question:
+      "In 1939, Britain and France declared war on Germany after it invaded which country?",
+    quizNum: 4,
+    selectedAnswer: "Czechoslovakia",
+    type: "multiple",
+  },
+];
