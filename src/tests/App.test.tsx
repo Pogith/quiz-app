@@ -5,9 +5,9 @@ import { render } from "./utils";
 import App from "@/App";
 
 describe("App Test", () => {
-  it("render on a bad page", () => {
+  it("should render 404 Not Found page when routes wrong path", () => {
     render(<App />, { route: "/something-does-not-match" });
 
-    expect(screen.getByText(/Not Found/i)).toBeInTheDocument();
+    expect(screen.getByText(/404 Not Found/i)).toBeInTheDocument();
   });
 });
