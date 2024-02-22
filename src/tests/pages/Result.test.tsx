@@ -3,11 +3,11 @@ import { screen } from "@testing-library/react";
 
 import { render } from "../utils";
 
-import App from "@/App";
+import Result from "@/pages/Result/Result";
 
 describe("Result Page Test", () => {
   it("should render Result Page", () => {
-    render(<App />, { route: "/result" });
+    render(<Result />);
 
     expect(screen.getByText(/Result!/i)).toBeInTheDocument();
     expect(screen.getByText(/Correct Answer/i)).toBeInTheDocument();
@@ -18,7 +18,7 @@ describe("Result Page Test", () => {
   });
 
   it("should navigate to Home page when user click Back to Home button", async () => {
-    const { user } = render(<App />, { route: "/result" });
+    const { user } = render(<Result />);
 
     await user.click(screen.getByText(/Back to Home/i));
 
@@ -26,7 +26,7 @@ describe("Result Page Test", () => {
   });
 
   it("should navigate to Home page when user click Check My Note button", async () => {
-    const { user } = render(<App />, { route: "/result" });
+    const { user } = render(<Result />);
 
     await user.click(screen.getByText(/Check My Note/i));
 
