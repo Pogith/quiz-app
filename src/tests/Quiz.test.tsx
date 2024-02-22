@@ -23,7 +23,7 @@ describe("Quiz Page Test", () => {
 
     render(<Quiz />);
 
-    expect(screen.getByText(/Loading..../i)).toBeInTheDocument();
+    expect(document.querySelector(".loading")).not.toBeNull();
   });
 
   it("should render quiz when successfully fetch", async () => {
