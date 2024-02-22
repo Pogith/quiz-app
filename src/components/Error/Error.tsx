@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import styles from "./styles.module.scss";
 
 import Button from "../Button/Button";
+import { useDispatch } from "react-redux";
+import { clearError } from "@/store/quiz/quizSlice";
 
 type Props = {
   error: any;
@@ -10,8 +12,10 @@ type Props = {
 
 function Error({ error }: Props) {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleNavigateHomePage = () => {
+    dispatch(clearError());
     navigate("/");
   };
 
