@@ -9,10 +9,14 @@ export function* watchFetchQuizSuccess() {
   try {
     const response: QuizResponse = yield call(api.fetchQuiz);
 
-    yield put({
-      type: fetchQuizSuccess.type,
-      payload: { quiz: response.results },
-    });
+    if (response["response_code"] === 0) {
+      yield put({
+        type: fetchQuizSuccess.type,
+        payload: { quiz: response.results },
+      });
+    } else {
+      yield put({ type: fetchQuizError.type, payload: { error: response } });
+    }
   } catch (err) {
     yield put({ type: fetchQuizError.type, payload: { error: err } });
   }

@@ -15,3 +15,7 @@ export const getQuizResults = (state: RootState) => {
 export const getIncorrectQuiz = (state: RootState) => {
   return state.quiz.incorrectQuiz;
 };
+
+export const getError = (state: RootState) => {
+  return state.quiz.error;
+};
